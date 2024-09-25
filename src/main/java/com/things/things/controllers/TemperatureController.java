@@ -1,5 +1,7 @@
 package com.things.things.controllers;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +22,11 @@ public class TemperatureController {
     @GetMapping
     public String getRoot() {
         return "Hello World!";
+    }
+
+    @GetMapping("/temperatures")
+    public List<Temperature> getTemperatures() {
+        return temperatureService.getTemperatures();
     }
 
     @PostMapping("/temperature")
