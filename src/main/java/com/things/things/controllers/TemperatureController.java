@@ -31,6 +31,8 @@ public class TemperatureController {
 
     @PostMapping("/temperature")
     public Temperature addTemperature(@RequestBody Temperature temperature) {
+        System.out.println("Mottagen temperatur: " + temperature.getCelcius() + " °C");
         return temperatureService.addTemperature(temperature);
+        
     }
 }
