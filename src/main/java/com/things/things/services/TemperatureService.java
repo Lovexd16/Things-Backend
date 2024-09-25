@@ -1,5 +1,7 @@
 package com.things.things.services;
 
+import java.util.List;
+
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,12 @@ public class TemperatureService {
         this.mongoOperations = mongoOperations;
     }
 
+    public List<Temperature> getTemperatures() {
+        return mongoOperations.findAll(Temperature.class);
+    }
+
     public Temperature addTemperature(Temperature temperature) {
         return mongoOperations.insert(temperature);
     }
+
 }
