@@ -1,5 +1,8 @@
 package com.things.things.models;
 
+import java.time.LocalDateTime;
+
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,9 +12,13 @@ public class Temperature {
     private String temperatureId;
     private Double celcius;
 
-    public Temperature(String temperatureId, Double celcius) {
+    @CreatedDate
+    private LocalDateTime timestamp;
+
+    public Temperature(String temperatureId, Double celcius, LocalDateTime timestamp) {
         this.temperatureId = temperatureId;
         this.celcius = celcius;
+        this.timestamp = timestamp;
     }
 
     public String getTemperatureId() {
@@ -28,6 +35,14 @@ public class Temperature {
 
     public void setCelcius(Double celcius) {
         this.celcius = celcius;
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
     }
 
 }
